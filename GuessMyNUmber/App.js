@@ -1,20 +1,38 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-
+import { useState } from "react";
+import { StatusBar } from "expo-status-bar";
+import { LinearGradient } from "expo-linear-gradient";
+import { StyleSheet, ImageBackground } from "react-native";
+import StartGameScreen from "./screens/StartGameScreen";
+import GameScreen from "./screens/GameScreen";
 export default function App() {
+  const [userNumber, setUserNumber] = useState();
+  function startGameHundler(pickedNumber) {
+    setUserNumber(pickedNumber);
+  }
+  let screen = <StartGameScreen onPickNumber={startGameHundler} />;
+  if (userNumber) {
+    screen = <GameScreen />;
+  }
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <LinearGradient colors={["#4e0329", "#ddb52f"]} style={styles.appContainer}>
+      <StatusBar style="dark" />
+      <ImageBackground
+        style={styles.appContainer}
+        source={require("./assets/images/dice.jpg")}
+        resizeMode="cover"
+        imageStyle={styles.backgroundImage}
+      >
+        {screen}
+      </ImageBackground>
+    </LinearGradient>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  appContainer: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  },
+  backgroundImage: {
+    opacity: 0.2,
   },
 });
