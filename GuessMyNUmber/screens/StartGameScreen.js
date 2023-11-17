@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 2,
     color: Colors.accent500,
     marginVertical: 8,
-    fontWeight: "open-sans-bold",
+    fontFamily: "open-sans-bold",
     textAlign: "center",
   },
 

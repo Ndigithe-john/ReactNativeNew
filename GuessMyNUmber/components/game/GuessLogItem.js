@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     padding: 12,
     backgroundColor: Colors.accent500,
-    flexDirection: row,
+    flexDirection: "row",
     justifyContent: "space-between",
     width: "100%",
     elevation: 4,
