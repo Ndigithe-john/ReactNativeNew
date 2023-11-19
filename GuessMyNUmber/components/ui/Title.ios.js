@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     color: Colors.accent500,
     textAlign: "center",
     borderColor: Colors.accent500,
-    borderWidth: Platform.OS === "ios" ? 2 : 0,
+    borderWidth: 2,
     padding: 12,
     marginTop: 16,
     borderRadius: 2,

@@ -51,20 +51,22 @@ export default function App() {
   }
 
   return (
-    <LinearGradient
-      colors={[Colors.primary650, Colors.accent500]}
-      style={styles.appContainer}
-    >
+    <>
       <StatusBar style="light" />
-      <ImageBackground
+      <LinearGradient
+        colors={[Colors.primary650, Colors.accent500]}
         style={styles.appContainer}
-        source={require("./assets/images/dice.jpg")}
-        resizeMode="cover"
-        imageStyle={styles.backgroundImage}
       >
-        <SafeAreaView style={styles.appContainer}>{screen}</SafeAreaView>
-      </ImageBackground>
-    </LinearGradient>
+        <ImageBackground
+          style={styles.appContainer}
+          source={require("./assets/images/dice.jpg")}
+          resizeMode="cover"
+          imageStyle={styles.backgroundImage}
+        >
+          <SafeAreaView style={styles.appContainer}>{screen}</SafeAreaView>
+        </ImageBackground>
+      </LinearGradient>
+    </>
   );
 }
 
