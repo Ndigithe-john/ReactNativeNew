@@ -11,17 +11,22 @@ import Colors from "../constants/colors";
 import PrimaryButton from "../components/ui/PrimaryButton";
 
 function GameOver({ numberOfRounds, userInputedNumber, onStartNewGame }) {
-  const { length, width } = useWindowDimensions();
+  const { width, height } = useWindowDimensions();
 
-  let imageSize = 300;
+  let imageDimensions = 300;
 
   if (width < 380) {
-    imageSize = 150;
+    imageDimensions = 150;
   }
 
   if (height < 400) {
-    imageSize = 80;
+    imageDimensions = 80;
   }
+  const imageStyle = {
+    width: imageDimensions,
+    height: imageDimensions,
+    borderRadius: imageDimensions / 2,
+  };
 
   return (
     <ScrollView style={styles.screen}>
@@ -47,11 +52,7 @@ function GameOver({ numberOfRounds, userInputedNumber, onStartNewGame }) {
 export default GameOver;
 
 // const deviceWidth = Dimensions.get("window").width;
-const imageStyle = {
-  width: imageSize,
-  height: imageSize,
-  borderRadius: imageSize / 2,
-};
+
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
