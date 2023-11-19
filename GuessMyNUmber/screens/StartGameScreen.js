@@ -1,5 +1,13 @@
 import { useState } from "react";
-import { TextInput, View, StyleSheet, Alert, Text } from "react-native";
+import {
+  TextInput,
+  View,
+  StyleSheet,
+  Alert,
+  useWindowDimensions,
+  KeyboardAvoidingView,
+  ScrollView,
+} from "react-native";
 import PrimaryButton from "../components/ui/PrimaryButton";
 import Colors from "../constants/colors";
 import Title from "../components/ui/Title";
@@ -9,6 +17,7 @@ import Buttons from "../components/ui/Buttons";
 
 function StartGameScreen({ onPickNumber }) {
   const [enteredNumber, setEnteredNumber] = useState("");
+  const { width, height } = useWindowDimensions();
   function numberInputHandler(enteredText) {
     setEnteredNumber(enteredText);
   }
@@ -32,40 +41,54 @@ function StartGameScreen({ onPickNumber }) {
     }
     onPickNumber(userInputNumber);
   }
+  const marginTopDimensions = height < 400 ? 30 : 100;
   return (
-    <View style={styles.mainContainer}>
-      <Title>Guess My Number</Title>
-      <Card>
-        <InstructionText>Enter a number to continue</InstructionText>
-        <TextInput
-          style={styles.textInput}
-          maxLength={2}
-          keyboardType="number-pad"
-          autoCapitalize="none"
-          autoCorrect={false}
-          onChangeText={numberInputHandler}
-          value={enteredNumber}
-        />
-        <Buttons>
-          <View style={styles.buttonContainer}>
-            <PrimaryButton onPress={resetInputHandler}>Reset</PrimaryButton>
-          </View>
-          <View style={styles.buttonContainer}>
-            <PrimaryButton onPress={confirmInputHadler}>Confrim</PrimaryButton>
-          </View>
-        </Buttons>
-      </Card>
-    </View>
+    <ScrollView style={styles.screen}>
+      <KeyboardAvoidingView style={styles.screen} behavior="position">
+        <View
+          style={[styles.mainContainer, { marginTop: marginTopDimensions }]}
+        >
+          <Title>Guess My Number</Title>
+          <Card>
+            <InstructionText>Enter a number to continue</InstructionText>
+            <TextInput
+              style={styles.textInput}
+              maxLength={2}
+              keyboardType="number-pad"
+              autoCapitalize="none"
+              autoCorrect={false}
+              onChangeText={numberInputHandler}
+              value={enteredNumber}
+            />
+            <Buttons>
+              <View style={styles.buttonContainer}>
+                <PrimaryButton onPress={resetInputHandler}>Reset</PrimaryButton>
+              </View>
+              <View style={styles.buttonContainer}>
+                <PrimaryButton onPress={confirmInputHadler}>
+                  Confrim
+                </PrimaryButton>
+              </View>
+            </Buttons>
+          </Card>
+        </View>
+      </KeyboardAvoidingView>
+    </ScrollView>
   );
 }
 
 export default StartGameScreen;
 
+// const deviceHeight=Dimensions.get('window').height; instead i used useWindowDimensions hook since this is locked
 const styles = StyleSheet.create({
+  screen: {
+    flex: 1,
+  },
   mainContainer: {
     flex: 1,
-    marginTop: 100,
+    // marginTop: deviceHeight<400? 30:100,
     marginHorizontal: 20,
+    alignItems: "center",
   },
 
   textInput: {
