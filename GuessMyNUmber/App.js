@@ -2,12 +2,14 @@ import { useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { LinearGradient } from "expo-linear-gradient";
 import { useFonts } from "expo-font";
-import AppLoading from "expo-app-loading";
+import * as SplashScreen from "expo-splash-screen";
 import Colors from "./constants/colors";
 import { StyleSheet, ImageBackground, SafeAreaView } from "react-native";
 import StartGameScreen from "./screens/StartGameScreen";
 import GameScreen from "./screens/GameScreen";
 import GameOver from "./screens/GameOver";
+
+SplashScreen.preventAutoHideAsync();
 export default function App() {
   const [userNumber, setUserNumber] = useState();
   const [gameIsOver, setGameIsOver] = useState(true);
@@ -20,7 +22,7 @@ export default function App() {
     "open-sans-condensed": require("./assets/fonts/OpenSans_Condensed-Regular.ttf"),
   });
   if (!fontsLoaded) {
-    return <AppLoading />;
+    SplashScreen.hideAsync();
   }
   function startGameHundler(pickedNumber) {
     setUserNumber(pickedNumber);
