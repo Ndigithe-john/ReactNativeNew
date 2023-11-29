@@ -1,5 +1,6 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigation } from "@react-navigation/drawer";
+// import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { WelcomeScreen } from "./screens/WelcomeScreen";
 import { Ionicons } from "@expo/vector-icons";
 import { UserScreen } from "./screens/UserScreen";
