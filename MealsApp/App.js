@@ -81,5 +81,4 @@ export default function App() {
     </>
   );
 }
-
-const styles = StyleSheet.create({});
+//checking if the ssh still works
