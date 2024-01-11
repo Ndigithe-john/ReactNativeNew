@@ -2,7 +2,6 @@ import "react-native-gesture-handler";
 import { StatusBar } from "expo-status-bar";
 import CategoryScreens from "./screens/CategoryScreens";
 import { Ionicons } from "@expo/vector-icons";
-import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import MealsOverviewScreen from "./screens/MealsOverviewScreen";
